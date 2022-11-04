@@ -25,13 +25,9 @@ const CategoryProducts = () => {
 
     useEffect(()=> {
         fetchCategories();
-        
-        // if (products?.length) {
-        //     console.log(category);
-        // }
-        
+       
         return ()=> dispatch(removeSetProducts());
-    }, [category, dispatch, fetchCategories])
+    }, [category])
 
   return (
     <>

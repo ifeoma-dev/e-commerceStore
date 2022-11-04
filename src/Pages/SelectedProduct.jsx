@@ -20,7 +20,6 @@ const SelectedProduct = () => {
         );
 
         dispatch(setSelectedProduct(response.data))
-        // console.log(response.data)
     }
 
     // run fetch-product function whenever product id changes

@@ -53,7 +53,7 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
             productid ? dispatch(removeLikedProduct(productid)) : dispatch(removeLikedProduct(cartItemID));
           }
         }
-      })
+      }, [liked, selectedProduct, cartItem, cartItemID, dispatch, functionCalled, productid])
 
   return (
     <AiFillHeart

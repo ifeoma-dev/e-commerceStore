@@ -4,9 +4,12 @@ import { Link } from 'react-router-dom';
 const CheckoutBag = ({products}) => {
   return (
     <>
-    {products?.map((product)=> (
+    {products?.map((product, i)=> (
       // single product container
-      <div className='sm:w-[180px] xs.5:w-[150px] xs:w-[100px] w-[100px] h-[100%] flex flex-col justify-between'>
+      <div 
+        className='sm:w-[180px] xs.5:w-[150px] xs:w-[100px] w-[100px] 
+        h-[100%] flex flex-col justify-between'
+        key={i}>
           {/* just img only wrapper */}
           <div className='w-full h-[70%] relative'>
               <img 

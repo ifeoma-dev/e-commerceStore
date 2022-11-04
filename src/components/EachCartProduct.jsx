@@ -10,17 +10,18 @@ const EachCartProduct = ({product}) => {
     const [handleCheckOut, setHandleCheckout] = useState(false);
     const [currentItem, setCurrentItem] = useState({});
     const [isShowingImage, setIsShowingImage] = useState(true);
+    
 
     // onload of page, set current item with incoming product
     useEffect(()=> {
       setCurrentItem(product)
-    }, [])
+    }, [product])
 
     // set current item's checked property to toggle b/w t & f
     const handleClick = ()=> {
       setHandleCheckout(true);
       setCurrentItem({...currentItem, checked: !currentItem?.checked})
-      console.log('checkout product is', !currentItem?.checked)
+      console.log('checkout product is', !product?.checked)
     }
 
 
@@ -51,7 +52,7 @@ const EachCartProduct = ({product}) => {
                 key={product?.id}>
                <input 
                  type='checkbox'
-                 checked={currentItem?.checked}
+                 checked={currentItem?.checked || product?.checked}
                  className='w-6 h-6'
                  onChange={handleClick} />
        
@@ -78,7 +79,7 @@ const EachCartProduct = ({product}) => {
                     <>
                       <input 
                         type='checkbox'
-                        checked={currentItem?.checked}
+                        checked={currentItem?.checked || product?.checked}
                         className='w-6 h-6 animate-slideup'
                         onChange={handleClick} />
              

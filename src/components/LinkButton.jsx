@@ -14,7 +14,9 @@ const LinkButton = (props) => {
               $(`.${props?.givenClass}`).css('color', 'rgb(75, 85, 99)');
               const target = e.target;
               target.style.color = 'black'; 
-              props?.handleClick();
+              if (props?.handleClick) {
+                props?.handleClick();
+              }
           }}>
           {props?.string}</button>
       </Link>

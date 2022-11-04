@@ -16,13 +16,12 @@ const CheckoutItems = () => {
     const [lastIndex, setlastIndex] = useState(largeScreen ? 3 : !xSmallScreen ? 2 : 1);
     const [products, setProducts] = useState([]);
 
-    const sliceCheckoutList = ()=> {
-        return checkoutProducts?.slice(firstIndex, lastIndex);
-    }
-
     useEffect(()=> {
-        setProducts(sliceCheckoutList());
-    }, [firstIndex, sliceCheckoutList])
+      const sliceCheckoutList = ()=> {
+        setProducts(checkoutProducts?.slice(firstIndex, lastIndex));
+      }
+      sliceCheckoutList();
+    }, [firstIndex])
 
   return (
     <div className='w-full relative sm:h-[250px] xs:h-[150px] bg-transparent flex gap-6 justify-center'>

@@ -8,21 +8,22 @@ const CheckoutComponent = () => {
     const { checkoutProducts } = useSelector((state)=> state?.allCartProducts);
     const [totalPrice, setTotalPrice] = useState(0);
 
-    const costOfItems = ()=> {
-        let itemsTotalCost = 0;
-        checkoutProducts?.map((product)=> {
-          itemsTotalCost += product?.price * product?.quantity;
-        })
-
-        return itemsTotalCost;
-        // to 2 dp =>  ( Math.round(itemsTotalCost).toFixed(2)  )
-    }
+    
 
     // setTotalPrice(costOfItems());
 
 
    useEffect(()=> {
-    setTotalPrice(()=> costOfItems);
+    const costOfItems = ()=> {
+      let itemsTotalCost = 0;
+      checkoutProducts?.map((product)=> {
+        itemsTotalCost += product?.price * product?.quantity;
+      })
+      
+      setTotalPrice(itemsTotalCost)
+      // to 2 dp =>  ( Math.round(itemsTotalCost).toFixed(2)  )
+  }
+    costOfItems();
 
 })
     
@@ -34,12 +35,6 @@ const CheckoutComponent = () => {
         className={'font-bold lg:text-2xl sm:text-lg text-base'}
         text='Subtotal:'
         totalPrice={totalPrice}/>
-
-      <div>
-        {checkoutProducts?.map((product, i)=> (
-          <p className='mb-2' key={product?.id}>{i+1}. {product?.title}</p>
-        ))}
-      </div>
 
       <CheckoutButton
       to='/checkout'
