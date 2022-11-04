@@ -13,13 +13,18 @@ const CheckoutComponent = () => {
         checkoutProducts?.map((product)=> {
           itemsTotalCost += product?.price * product?.quantity;
         })
+
         return itemsTotalCost;
         // to 2 dp =>  ( Math.round(itemsTotalCost).toFixed(2)  )
     }
 
+    // setTotalPrice(costOfItems());
+
+
    useEffect(()=> {
-    setTotalPrice(costOfItems());
-   })
+    setTotalPrice(()=> costOfItems);
+
+})
     
   return (
     <div className='bg-white w-full lg:p-10 sm:p-8 p-4 flex flex-col items-start gap-4'>

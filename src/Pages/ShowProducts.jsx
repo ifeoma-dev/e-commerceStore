@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { setProducts, removeSetProducts } from '../redux/actions/ProductActions';
 import EachProduct from '../components/EachProduct';
 

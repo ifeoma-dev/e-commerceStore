@@ -19,7 +19,7 @@ const ItemsToBuy = () => {
 
    useEffect(()=> {
     setTotalPrice(costOfItems());
-   })
+   }, [costOfItems])
 
   return (
     <div className='w-full border-[1px] border-black

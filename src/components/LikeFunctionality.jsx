@@ -26,7 +26,7 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
       // ...product' display
     const isLikedProduct = ()=> {
       likedProducts?.map((product)=> {
-        if (product?.id == productid || cartItemID) {
+        if (product?.id === productid || cartItemID) {
           setLiked(true)
         }
       })
@@ -35,7 +35,7 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
     //   effect handling whether product's been liked before on pageload
     useEffect(()=> {
         isLikedProduct();
-        console.log('liked is', liked)
+        // console.log('liked is', liked)
       }, [])
       
 
@@ -53,7 +53,7 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
             productid ? dispatch(removeLikedProduct(productid)) : dispatch(removeLikedProduct(cartItemID));
           }
         }
-      }, [liked])
+      })
 
   return (
     <AiFillHeart

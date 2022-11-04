@@ -1,6 +1,5 @@
 import React from 'react';
 import CheckoutHeaderTxt from './CheckoutHeaderTxt';
-import CheckoutMiniCard from './CheckoutMiniCard';
 import CheckoutSubtotal from './CheckoutSubtotal';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
@@ -8,8 +7,8 @@ import { useSelector } from 'react-redux';
 const OrderSummary = () => {
     const { checkoutProducts } = useSelector((state)=> state?.allCartProducts);
     const [totalPrice, setTotalPrice] = useState(0);
-    const [shippingFee, setShippingFee] = useState(0.00);
-    const [shippingGuarantee, setGuarantee] = useState(0.00);
+    const shippingFee = 0.00;
+    const shippingGuarantee = 0.00;
 
     const costOfItems = ()=> {
         let itemsTotalCost = 0;

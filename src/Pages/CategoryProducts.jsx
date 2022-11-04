@@ -31,7 +31,7 @@ const CategoryProducts = () => {
         // }
         
         return ()=> dispatch(removeSetProducts());
-    }, [category])
+    }, [category, dispatch, fetchCategories])
 
   return (
     <>

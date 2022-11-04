@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import EachCartProduct from '../components/EachCartProduct';
 import { Link } from 'react-router-dom';
 import CheckoutComponent from '../components/CheckoutComponent';
 import ShippingLocation from '../components/ShippingLocation';
-import PaymentOptions from '../components/PaymentOptions';
 import CheckoutTracker from '../components/CheckoutTracker';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 
 const CartPage = () => {
-  const { cartProducts, checkoutProducts } = useSelector((state)=> state?.allCartProducts)
+  const { cartProducts } = useSelector((state)=> state?.allCartProducts)
   const isSmallDevice = window.innerWidth >= 768 ;
 
   return (

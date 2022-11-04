@@ -10,6 +10,7 @@ const CheckoutBag = ({products}) => {
           {/* just img only wrapper */}
           <div className='w-full h-[70%] relative'>
               <img 
+              alt={products?.title}
                 src={product?.image} 
                 className='w-full h-full object-contain' />
               <div 

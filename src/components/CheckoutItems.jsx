@@ -22,7 +22,7 @@ const CheckoutItems = () => {
 
     useEffect(()=> {
         setProducts(sliceCheckoutList());
-    }, [firstIndex])
+    }, [firstIndex, sliceCheckoutList])
 
   return (
     <div className='w-full relative sm:h-[250px] xs:h-[150px] bg-transparent flex gap-6 justify-center'>
