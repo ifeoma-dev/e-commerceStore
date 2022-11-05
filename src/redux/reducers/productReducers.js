@@ -39,15 +39,20 @@ export const selectedProductReducer = (state = initialState, {type, payload})=> 
 export const setMyLikedProducts = (state = initialState, { type, payload }) => {
     switch (type) {
         case ActionTypes.LIKED_PRODUCTS:
-            const alreadyLikedItems = state?.likedProducts;
+            const alreadyLikedItems = [...state?.likedProducts];
             const newLikedItem = payload;
-            return {...state, likedProducts: [...alreadyLikedItems, newLikedItem]}
+            const newLikedItemCopy = {...newLikedItem, liked: true}
+            console.log('just liked - prods', [...alreadyLikedItems, newLikedItemCopy])
+            return {...state, likedProducts: [...alreadyLikedItems, newLikedItemCopy]}
 
         case ActionTypes.REMOVE_LIKED_PRODUCTS: 
-        const likedProducts = state?.likedProducts;
-        const productsArray = [...likedProducts];
+        const productsArray = [...state?.likedProducts];
         const productIndex = productsArray?.findIndex((product)=> product?.id === payload)
+        const productToUnlike = productsArray[productIndex];
+        const productToUnlikeCopy = {...productToUnlike, liked: false}
+        productsArray?.splice(productIndex, 1, productToUnlikeCopy);
         productsArray?.splice(productIndex, 1);
+        console.log('just unliked - prods', productsArray)
         return {...state, likedProducts: [...productsArray]}
 
         default:

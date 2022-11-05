@@ -9,35 +9,32 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
     const { productid } = useParams();
     const dispatch = useDispatch();
     const [functionCalled, setFunctionCalled] = useState(false);
-    const [liked, setLiked] = useState(false);
+    const [liked, setLiked] = useState(false)
     const { selectedProduct } = useSelector((state)=> state?.selectedProduct);
     const { likedProducts } = useSelector((state)=> state?.allLikedProducts)
-
+ 
 
     // handle when like button is clicked
     const handleliked = ()=> {
         setFunctionCalled(true)
-        setLiked(!liked);
+        setLiked(!liked)
       
       }
 
-    //   handle if product's been liked before
-    // cartItem pack for whether component is called in an 'each...
-      // ...product' display
-    const isLikedProduct = ()=> {
-      likedProducts?.map((product)=> {
-        if (product?.id === productid || cartItemID) {
-          setLiked(true)
+      // check if product has been liked before
+      useEffect(()=> {
+        if (likedProducts?.length > 0) {
+            likedProducts?.map((product)=> {
+              // window parse int makes string a number
+              if (product?.id === window.parseInt(productid) || product?.id === cartItemID) {
+                setLiked(true)
+                productid ? console.log('product', window.parseInt(productid)) : console.log('cart item', cartItemID)
+              }
+            
+          });
         }
-      })
-    }
-
-    //   effect handling whether product's been liked before on pageload
-    useEffect(()=> {
-        isLikedProduct();
-        // console.log('liked is', liked)
-      }, [])
-      
+         
+      }, [])    
 
       // whenever product is liked/disliked
       // cartItem pack for whether component is called in an 'each...
@@ -46,14 +43,14 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
         if (functionCalled) {
           if (liked) {
         
-            productid ? dispatch(setLikedProducts(selectedProduct)) : dispatch(setLikedProducts(cartItem))
+            productid ? dispatch(setLikedProducts(selectedProduct)) : dispatch(setLikedProducts(cartItem)) 
           } 
     
           if (!liked) {
-            productid ? dispatch(removeLikedProduct(productid)) : dispatch(removeLikedProduct(cartItemID));
+            productid ? dispatch(removeLikedProduct(productid)) : dispatch(removeLikedProduct(cartItem)) 
           }
         }
-      }, [liked, selectedProduct, cartItem, cartItemID, dispatch, functionCalled, productid])
+      }, [liked])
 
   return (
     <AiFillHeart
