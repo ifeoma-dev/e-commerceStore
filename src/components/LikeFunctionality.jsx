@@ -28,7 +28,6 @@ const LikeFunctionality = ({cartItemID, cartItem}) => {
               // window parse int makes string a number
               if (product?.id === window.parseInt(productid) || product?.id === cartItemID) {
                 setLiked(true)
-                productid ? console.log('product', window.parseInt(productid)) : console.log('cart item', cartItemID)
               }
             
           });

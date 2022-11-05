@@ -42,7 +42,6 @@ export const setMyLikedProducts = (state = initialState, { type, payload }) => {
             const alreadyLikedItems = [...state?.likedProducts];
             const newLikedItem = payload;
             const newLikedItemCopy = {...newLikedItem, liked: true}
-            console.log('just liked - prods', [...alreadyLikedItems, newLikedItemCopy])
             return {...state, likedProducts: [...alreadyLikedItems, newLikedItemCopy]}
 
         case ActionTypes.REMOVE_LIKED_PRODUCTS: 
@@ -52,7 +51,6 @@ export const setMyLikedProducts = (state = initialState, { type, payload }) => {
         const productToUnlikeCopy = {...productToUnlike, liked: false}
         productsArray?.splice(productIndex, 1, productToUnlikeCopy);
         productsArray?.splice(productIndex, 1);
-        console.log('just unliked - prods', productsArray)
         return {...state, likedProducts: [...productsArray]}
 
         default:
